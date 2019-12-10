@@ -1,24 +1,33 @@
 {
-  "name": "delicut-web-single",
-  "version": "0.1.0",
-  "license": "MIT",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "scripts": {
-    "build": "just-scripts build",
-    "just": "just-scripts",
-    "start": "just-scripts start",
-    "test": "just-scripts test",
-    "change": "npx beachball change",
-    "gen": "npx plop"
-  },
-  "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "office-ui-fabric-react": "^7.0.0"
-  },
-  "devDependencies": {
-    "just-stack-react": "^1.0.0",
-    "just-scripts": "^0.27.0"
-  }
+	"name": "delicut-web-single",
+	"version": "0.1.0",
+	"license": "MIT",
+	"main": "lib-commonjs/index.js",
+	"module": "lib/index.js",
+	"scripts": {
+		"build": "just-scripts build",
+		"just": "just-scripts",
+		"start": "just-scripts start",
+		"test": "just-scripts test",
+		"change": "npx beachball change",
+		"predeploy": "just-scripts build  && cp public/CNAME dist/CNAME",
+		"deploy": "gh-pages -d dist",
+		"gen": "npx plop"
+	},
+	"dependencies": {
+		"css-loader": "^3.2.1",
+		"file-loader": "^5.0.2",
+		"gh-pages": "^2.1.1",
+		"node-sass": "^4.13.0",
+		"office-ui-fabric-react": "^7.69.1",
+		"postcss-loader": "^3.0.0",
+		"react": "^16.12.0",
+		"react-dom": "^16.12.0",
+		"sass-loader": "^8.0.0"
+	},
+	"devDependencies": {
+		"just-scripts": "^0.36.1",
+		"just-stack-react": "^1.0.4",
+		"webpack": "^4.41.2"
+	}
 }
