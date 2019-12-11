@@ -14,11 +14,6 @@ const styles = mergeStyleSets({
 	}
 });
 
-const testStyle = {
-	backgroundColor: 'red',
-	height: 48
-};
-
 export const AppHeader: React.FunctionComponent = () => {
 	return <header className={styles.header}>
 		<div className={styles.inner}>
