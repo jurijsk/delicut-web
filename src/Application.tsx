@@ -5,6 +5,7 @@ import {TryOut} from './components/TryOut'
 import {AppHeader} from './components/AppHeader';
 import {ViewHeaderText} from './components/ViewHeaderText';
 import {Translation} from 'react-i18next';
+import {Helmet} from "react-helmet";
 
 import logo from './logo.png';
 
@@ -13,10 +14,14 @@ const boldStyle = {
 	root: {fontWeight: FontWeights.semibold}
 };
 
-export const App: React.FunctionComponent = () => {
+export const Application: React.FunctionComponent = () => {
 	return (
 		<Translation>{ (t) =>
 		<Fabric>
+			<Helmet>
+					<title>{t("Delicut - Make your podcast seen and listened")}</title>
+					<meta name="description" content={t("Delicut allows talk-audio producers to create short engaging video cuts using audio and transcription which work even when muted")} />
+			</Helmet>
 			<AppHeader></AppHeader>
 			<main>
 				<Stack

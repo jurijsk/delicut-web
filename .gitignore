@@ -2,3 +2,5 @@ node_modules
 lib
 lib-commonjs
 dist
+yarn-error.log
+package-lock.json

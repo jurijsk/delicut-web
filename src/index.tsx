@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './App';
+import {Application} from './Application';
 import {mergeStyles} from 'office-ui-fabric-react';
 import './i18n';
 
@@ -17,6 +17,6 @@ mergeStyles({
 
 ReactDOM.render(
 
-	<App />
+	<Application />
 
 	, document.getElementById('app'));
