@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './App';
 import { mergeStyles } from 'office-ui-fabric-react';
+import './i18n';
 
 // Inject some global styles
 mergeStyles({
