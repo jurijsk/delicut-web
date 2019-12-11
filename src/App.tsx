@@ -4,6 +4,7 @@ import {Fabric, Stack, Text, Link, FontWeights, FontSizes} from 'office-ui-fabri
 import {TryOut} from './components/TryOut'
 import {AppHeader} from './components/AppHeader';
 import {ViewHeaderText} from './components/ViewHeaderText';
+import {Translation} from 'react-i18next';
 
 import logo from './logo.png';
 
@@ -14,6 +15,7 @@ const boldStyle = {
 
 export const App: React.FunctionComponent = () => {
 	return (
+		<Translation>{ (t) =>
 		<Fabric>
 			<AppHeader></AppHeader>
 			<main>
@@ -37,11 +39,11 @@ export const App: React.FunctionComponent = () => {
 					<TryOut></TryOut>
 
 					<Text variant="large">
-						Audio isn't native to social web. Video is. Create shareable video clips with kinetic captions out of podcast that works even when muted.
-			</Text>
+						{t("Audio isn't native to social web. Video is. Create shareable video clips with kinetic captions out of podcast that works even when muted.")} 
+					</Text>
 					<Text variant="large">
-						Share the video view Delicut’s EpiCentre URL to route user to their favorite podact app and measure vital metrics along the way.
-			</Text>
+						{t("Share the video view Delicut’s EpiCentre URL to route user to their favorite podact app and measure vital metrics along the way.")}
+					</Text>
 
 					<Text variant="large" styles={boldStyle}>Essential Links</Text>
 					<Stack horizontal gap={15} horizontalAlign="center">
@@ -60,5 +62,6 @@ export const App: React.FunctionComponent = () => {
 				</Stack>
 			</main>
 		</Fabric>
+		}</Translation>
 	);
 };
