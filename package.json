@@ -15,19 +15,25 @@
 		"gen": "npx plop"
 	},
 	"dependencies": {
-		"css-loader": "^3.2.1",
 		"file-loader": "^5.0.2",
 		"gh-pages": "^2.1.1",
-		"node-sass": "^4.13.0",
+		"html-webpack-plugin": "^3.2.0",
 		"office-ui-fabric-react": "^7.69.1",
-		"postcss-loader": "^3.0.0",
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0",
-		"sass-loader": "^8.0.0"
+		"styled-components": "^4.4.1"
 	},
 	"devDependencies": {
+		"babel-plugin-styled-components": "^1.10.6",
+		"css-loader": "^3.2.1",
 		"just-scripts": "^0.36.1",
 		"just-stack-react": "^1.0.4",
-		"webpack": "^4.41.2"
+		"node-sass": "^4.13.0",
+		"postcss-loader": "^3.0.0",
+		"sass-loader": "^8.0.0",
+		"typescript-plugin-styled-components": "^1.4.3",
+		"webpack": "^4.41.2",
+		"webpack-cli": "^3.3.10",
+		"webpack-dev-server": "^3.9.0"
 	}
 }
