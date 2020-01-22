@@ -1,24 +1,54 @@
 import React from 'react';
 import {mergeStyleSets} from 'office-ui-fabric-react';
+import styled  from 'styled-components';
 
-const styles = mergeStyleSets({
-	header: {
-		height: '48px',
-		backgroundColor: 'transparent',
-		position: 'absolute',
-		top: 0,
-	},
-	inner: {
-		width: 1000,
-		margin: '0 auto'
+import {Inner} from './Basics';
+
+import {useTranslation} from 'react-i18next';
+import  {ReactComponent as Logo} from './logo.svg';
+
+
+const height = 48;
+const StyledHeader = styled.header`
+	height: ${height}px;
+	line-height: ${height}px;
+	width: 100%;
+	background: transparent;
+	position: absolute;
+	top: 0;
+	z-index: 10;
+`;
+
+const FlexInner = styled(Inner)`
+	display:flex;
+	justify-content:flex-start;
+	-webkit-box-pack: start;
+`;
+
+const LogoLink = styled.a`
+	height: ${height}px;
+	display: block;
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+	padding: 6px 0;
+	filter: grayscale(100%);
+	&:hover {
+		filter:none;
 	}
-});
+	&:visited{
+		color: #000;
+	}
+`;
 
 export const AppHeader: React.FunctionComponent = () => {
-	return <header className={styles.header}>
-		<div className={styles.inner}>
-			
-		</div>
-	</header>
+	const {t} = useTranslation();
+	return <StyledHeader>
+		<FlexInner>
+			<LogoLink  href="/" title={t('Go to Delicut homepage')}>
+				<Logo height={36} />
+			</LogoLink>
+		</FlexInner>
+	</StyledHeader>
 }
 
