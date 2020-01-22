@@ -45,7 +45,9 @@ const svgConfig =
 	module: {
 		rules: [{
 			test: /\.svg$/,
-			use: ['@svgr/webpack', 'url-loader'],
+			use: [
+				{loader: '@svgr/webpack', options: {dimensions: false}}, 'url-loader'
+			],
 		}]
 	}
 };
