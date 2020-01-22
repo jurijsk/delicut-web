@@ -35,6 +35,18 @@
 			"args": [
 				"start"
 			],
+		},
+		{
+			"name": "Debug in Chrome",
+			"type": "chrome",
+			"request": "launch",
+			"url": "http://localhost:8080",
+			"webRoot": "${workspaceRoot}/src",
+			"smartStep": true, //start step docs: https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_smart-stepping
+			 "skipFiles": [
+			 	"<node_internals>/**/*.js",
+			 	"${workspaceFolder}/**/*.js"
+			 ]
 		}
 	]
 }
