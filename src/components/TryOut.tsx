@@ -12,7 +12,6 @@ const styles = mergeStyleSets({
 		verticalAlign: 'top',
 		display: 'inline-block',
 		textAlign: 'center',
-		margin: '0 100px',
 		minWidth: 130,
 		height: 32
 	},
