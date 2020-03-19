@@ -54,7 +54,7 @@ export const Application: React.FunctionComponent = () => {
 								{t("Audio isn't native to social web. Video is. Create shareable video clips with kinetic captions out of podcast that works even when muted.")}
 							</Text>
 							<Text variant="medium">
-								{t("Share the video view Delicut’s EpiCentre URL to route user to their favorite podact app and measure vital metrics along the way.")}
+								{t("Share the video view Delicut’s EpiCentre URL to route user to their favorite podcast app and measure vital metrics along the way.")}
 							</Text>
 						</Stack>
 					</Inner>
