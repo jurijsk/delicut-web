@@ -1,5 +1,4 @@
-import {createTheme, loadTheme, IRawStyle} from 'office-ui-fabric-react';
-//import {initializeIcons} from 'office-ui-fabric-react/lib/Icons';
+import {createTheme, loadTheme, IRawStyle} from '@fluentui/react';
 
 export function initFabricUITheme() {
 

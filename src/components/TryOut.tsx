@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, getId, PrimaryButton} from 'office-ui-fabric-react';
+import {Callout, Link, getTheme, FontWeights, mergeStyleSets, getId, PrimaryButton} from '@fluentui/react';
 
 export interface ICalloutBasicExampleState {
 	isCalloutVisible?: boolean;

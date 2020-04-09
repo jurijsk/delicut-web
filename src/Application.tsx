@@ -4,14 +4,13 @@ import AppStyles from './styles/Application.module.scss';
 import {initFabricUITheme} from './styles';
 initFabricUITheme();
 
-import {Fabric, Stack, Text, Link, FontWeights, FontSizes} from 'office-ui-fabric-react';
+import {Fabric, Stack, Text} from '@fluentui/react';
 import {TryOut} from './components/TryOut'
 import {AppHeader} from './components/AppHeader';
 import {ViewHeaderText} from './components/ViewHeaderText';
 import {Translation} from 'react-i18next';
 import {Helmet} from "react-helmet";
 import styled from 'styled-components';
-import logo from './logo.png';
 import {Inner} from './components/Basics';
 
 const StyledMain = styled.main`

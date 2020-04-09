@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Application} from './Application';
-import {mergeStyles} from 'office-ui-fabric-react';
+import {mergeStyles} from '@fluentui/react';
 import './i18n';
 
 // Inject some global styles

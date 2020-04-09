@@ -5,11 +5,11 @@ import {
 	FontSizes,
 	FontWeights,
 	DefaultFontStyles
-} from 'office-ui-fabric-react/lib/Styling';
-import {getTheme} from 'office-ui-fabric-react';
+} from '@fluentui/react';
+import {getTheme} from '@fluentui/react';
 
 
-//import {utilities} from 'office-ui-fabric-react/lib/Utilities';
+//import {utilities} from '@fluentui/react';
 const theme = getTheme();
 
 const StyledH1 = styled.h1`

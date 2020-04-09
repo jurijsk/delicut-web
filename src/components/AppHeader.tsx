@@ -1,5 +1,4 @@
 import React from 'react';
-import {mergeStyleSets} from 'office-ui-fabric-react';
 import styled  from 'styled-components';
 
 import {Inner} from './Basics';
