@@ -1,17 +1,19 @@
-const {webpackMerge, htmlOverlay, webpackServeConfig, tsOverlay } = require('just-scripts');
-const config = webpackServeConfig;
 
+const {webpackMerge, basicWebpackServeConfig, htmlOverlay, webpackServeConfig, tsOverlay, fileOverlay, stylesOverlay } = require('just-scripts');
+//const config = webpackServeConfig;
+
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
 
+//const stylesConfig = stylesOverlay();
 
-//Configuring `styled-components` plugin
-//1. import default from the plugin module
+/*Configuring `styled-components` plugin
+https://github.com/Igorbek/typescript-plugin-styled-components
+1. import default from the plugin module */
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
-
 //2. create a transformer;
 //the factory additionally accepts an options object which described below
-
 const styledComponentsTransformer = createStyledComponentsTransformer({
 	ssr: true,
 	displayName: true,
@@ -19,10 +21,20 @@ const styledComponentsTransformer = createStyledComponentsTransformer({
 	minify: false
 });
 
-const tsConfig = tsOverlay({loaderOptions: {getCustomTransformers: () => ({before: [styledComponentsTransformer]})}});
-merge.smart(config.module, tsConfig.module);
+//Add styled components plugin and 
+const tsConfig = tsOverlay({loaderOptions: { 
+	// disable type checker - we will use it in fork plugin
+	transpileOnly: true,
+	getCustomTransformers: () => ({before: [styledComponentsTransformer]})
+}});
 
+//merge.smart(config.module, tsConfig.module);
 
+//Delegate ESLinting to fork plugin (https://github.com/TypeStrong/fork-ts-checker-webpack-plugin)
+tsConfig.plugins[0].options.eslint  = true;
+tsConfig.plugins[0].eslint = true;
+
+const config = merge(basicWebpackServeConfig, styleConfig(), tsConfig, fileOverlay());
 
 //Loads svg files either as url or as react componenent:
 //Allows 2 following use case scenarious:
@@ -41,24 +53,67 @@ const svgConfig =
 {
 	module: {
 		rules: [{
-			test: /\.svg$/,
+			test: /\.svg$/i,
 			use: [
 				{loader: '@svgr/webpack', options: {dimensions: false}}, 'url-loader'
 			],
 		}]
 	}
 };
+config.plugins.push(new webpack.WatchIgnorePlugin([/\.s?css\.d\.ts$/]));
 
-module.exports = webpackMerge(
-	svgConfig, //order is important because there is another rule for svg in `config`
-	config,
-	htmlOverlay({
-		template: 'public/index.html'
-	}),
-	{
-		// Here you can custom webpack configurations
-		output: {
-			publicPath: '/'
+
+module.exports = function cookConfig(env, argv) {
+	const mode = argv.mode;
+	return webpackMerge(
+		svgConfig, //order is important because there is another rule for svg in `config`
+		config,
+		htmlOverlay({
+			template: 'public/index.html'
+		}),
+		{
+			// Here you can custom webpack configurations
+			output: {
+				publicPath: '/'
+			}
 		}
-	}
-);
+	);
+}
+
+console.log("done");
+
+function styleConfig(){
+	return {
+		module: {
+			rules: [
+				{
+					test: /\.s?css$/i,
+					use: [
+						"style-loader",
+						{
+							loader: "@teamsupercell/typings-for-css-modules-loader",
+							options: {
+								// pass all the options for `css-loader` to `css-loader`, eg.
+							}
+						},
+						{
+							loader: "css-loader",
+							options: {
+								modules: {
+									mode: "local",
+									localIdentName: "[name]_[local]_[hash:base64:5]"
+								},
+								localsConvention: 'camelCaseOnly',
+							}
+						},
+						{
+							"loader": "postcss-loader",
+							options: {options: {}}
+						},
+						"sass-loader",
+					]
+				}
+			]
+		}
+	};
+}

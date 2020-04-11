@@ -7,11 +7,11 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch Webpack",
+			"name": "Launch Webpack (for webpack.config debugging)",
 			"program": "${workspaceFolder}/node_modules/webpack/bin/webpack.js",
 			"args": [
-				"--config",
-				"./webpack.serve.config.js"
+				"--config", "./webpack.serve.config.js"
+				,"--mode", "development"
 			],
 		},
 		{
@@ -30,7 +30,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch Just",
+			"name": "Launch Just (for just debugging)",
 			"program": "${workspaceFolder}/node_modules/just-scripts/bin/just-scripts.js",
 			"args": [
 				"start"
