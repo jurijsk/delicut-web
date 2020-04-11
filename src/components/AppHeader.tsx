@@ -45,7 +45,7 @@ export const AppHeader: React.FunctionComponent = () => {
 	return <StyledHeader>
 		<FlexInner>
 			<LogoLink  href="/" title={t('Go to Delicut homepage')}>
-				<Logo height={36} />
+				 <Logo height={36} /> 
 			</LogoLink>
 		</FlexInner>
 	</StyledHeader>

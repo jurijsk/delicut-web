@@ -72,43 +72,43 @@ export class TryOut extends React.Component<{}, ICalloutBasicExampleState> {
 
 		return (
 			<>
-				<div> { /* keep it to prevent jumping on Callout open then component lives in <Stack */ }
-				<div className={styles.buttonArea} ref={this._menuButtonElement}>
-					<PrimaryButton 
-						text="Try now for free"
-						ariaLabel="Try Delicut for free with 2 episodes"
-						onClick={this._onShowCalloutClicked} />
-				</div>
-				{this.state.isCalloutVisible && (
-					<Callout
-						className={styles.callout}
-						ariaLabelledBy={this._labelId}
-						ariaDescribedBy={this._descriptionId}
-						role="alertdialog"
-						gapSpace={5}
-						target={this._menuButtonElement.current}
-						onDismiss={this._onCalloutDismiss}
-						setInitialFocus={true}
-					>
-						<div className={styles.header}>
-							<p className={styles.title} id={this._labelId}>
-								Contact us to get a teste of the Delucut video and early access. 
+				<div> { /* keep it to prevent jumping on Callout open then component lives in <Stack */}
+					<div className={styles.buttonArea} ref={this._menuButtonElement}>
+						<PrimaryButton
+							text="Try now for free"
+							ariaLabel="Try Delicut for free with 2 episodes"
+							onClick={this._onShowCalloutClicked} />
+					</div>
+					{this.state.isCalloutVisible && (
+						<Callout
+							className={styles.callout}
+							ariaLabelledBy={this._labelId}
+							ariaDescribedBy={this._descriptionId}
+							role="alertdialog"
+							gapSpace={5}
+							target={this._menuButtonElement.current}
+							onDismiss={this._onCalloutDismiss}
+							setInitialFocus={true}
+						>
+							<div className={styles.header}>
+								<p className={styles.title} id={this._labelId}>
+									Contact us to get a teste of the Delucut video and early access.
 							</p>
-						</div>
-						<div className={styles.inner}>
-							<p className={styles.subtext} id={this._descriptionId}>
-								Emails a link to your episode, timemark and transcription of the cut you would like us to animate. 
-								<br/>
-								Do not hesitate to contact us for any other inquiries as well. 
-              				</p>
-							<div className={styles.actions}>
-								<Link className={styles.link} href="mailto:jurijs@delicut.eu" target="_blank">
-									Drop us a line
-                			</Link>
 							</div>
-						</div>
-					</Callout>
-				)}
+							<div className={styles.inner}>
+								<p className={styles.subtext} id={this._descriptionId}>
+									Emails a link to your episode, timemark and transcription of the cut you would like us to animate.
+								<br />
+								Do not hesitate to contact us for any other inquiries as well.
+								</p>
+								<div className={styles.actions}>
+									<Link className={styles.link} href="mailto:jurijs@delicut.eu" target="_blank">
+										Drop us a line
+									</Link>
+								</div>
+							</div>
+						</Callout>
+					)}
 				</div>
 			</>
 		);

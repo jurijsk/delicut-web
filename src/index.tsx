@@ -16,7 +16,5 @@ mergeStyles({
 });
 
 ReactDOM.render(
-
 	<Application />
-
 	, document.getElementById('app'));
