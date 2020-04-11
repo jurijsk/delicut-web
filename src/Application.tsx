@@ -4,23 +4,12 @@ import AppStyles from './styles/Application.module.scss';
 import {initFabricUITheme} from './styles';
 initFabricUITheme();
 
-import {Fabric, Stack, Text} from '@fluentui/react';
-import {TryOut} from './components/TryOut'
+import {Fabric} from '@fluentui/react';
+
 import {AppHeader} from './components/AppHeader';
-import {ViewHeaderText} from './components/ViewHeaderText';
 import {Translation} from 'react-i18next';
 import {Helmet} from "react-helmet";
-import styled from 'styled-components';
-import {Inner} from './components/Basics';
-
-const StyledMain = styled.main`
-	width: 100%;
-    position: relative;
-    overflow-x: hidden;
-	margin: 0px 0px 0px 0px;
-	padding: 148px 0 64px 0;
-	background: #94E5FF;
-`;
+import {Homepage} from './pages/Homepage/Homepage';
 
 export const Application: React.FunctionComponent = () => {
 	return (
@@ -41,34 +30,9 @@ export const Application: React.FunctionComponent = () => {
 					`}
 					</script>
 				</Helmet>
-				<AppHeader></AppHeader>
-				<StyledMain>
-					<Inner className={AppStyles.scssTest}>
-						<Stack
-							horizontalAlign="start"
-							verticalAlign="start"
-							verticalFill
-							styles={{
-								root: {
-									textAlign: 'left'
-								}
-							}}
-							gap={15}
-						>
-							{/* <img src={logo} alt="logo" /> */}
-							<ViewHeaderText />
-							<Stack gap={15}>
-								<TryOut></TryOut>
-							</Stack>
-							<Text variant="medium">
-								{t("Audio isn't native to social web. Video is. Create shareable video clips with kinetic captions out of podcast that works even when muted.")}
-							</Text>
-							<Text variant="medium">
-								{t("Share the video view Delicut’s EpiCentre URL to route user to their favorite podcast app and measure vital metrics along the way.")}
-							</Text>
-						</Stack>
-					</Inner>
-				</StyledMain>
+				<div className={AppStyles.scssTest}/>	
+				<AppHeader />
+				<Homepage />
 			</Fabric>
 		}</Translation>
 	);
