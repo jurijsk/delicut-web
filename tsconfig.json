@@ -12,5 +12,8 @@
 	"sourceMap": true
   },
 
-  "include": ["src", "typings/*.d.ts"]
+"include": [
+	"src",
+	"typings/*.d.ts" //leave it to make svg module.scss modules imports work 
+]
 }
