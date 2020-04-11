@@ -31,11 +31,15 @@
 		"url-loader": "^4.0.0"
 	},
 	"devDependencies": {
+		"@teamsupercell/typings-for-css-modules-loader": "^2.1.0",
 		"@types/react": "^16.9.32",
 		"@types/react-dom": "^16.9.6",
 		"@types/react-helmet": "^5.0.15",
+		"@typescript-eslint/eslint-plugin": "^2.27.0",
+		"@typescript-eslint/parser": "^2.27.0",
 		"babel-plugin-styled-components": "^1.10.7",
 		"css-loader": "^3.5.1",
+		"eslint": "^6.8.0",
 		"just-scripts": "^0.37.1",
 		"just-stack-react": "^1.0.4",
 		"node-sass": "^4.13.1",
