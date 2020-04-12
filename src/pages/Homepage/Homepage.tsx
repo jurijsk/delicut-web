@@ -1,12 +1,22 @@
 import React from 'react';
 import {Inner} from '../../components/Basics';
 import {TryOut} from '../../components/TryOut'
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {Stack, Text} from '@fluentui/react';
 import {ViewHeaderText} from '../../components/ViewHeaderText';
 import {withTranslation, WithTranslation} from 'react-i18next';
 import {TFunction} from 'i18next';
 import HomepageStyles from './Homepage.module.scss';
+import {MotionDurations, MotionTimings, FontSizes} from '@uifabric/fluent-theme';
+
+let a = 1;
+
+const SesctionAnimation = css`
+	opacity: 0;
+	transform: 'translate3d(0, 48px, 0)';
+	transition: transform: ${ MotionDurations.duration3} ${MotionTimings.decelerate},
+	 opacity ${MotionDurations.duration3} ${MotionTimings.decelerate} .05s;
+`;
 
 const StyledMain = styled.main`
 	width: 100%;
@@ -46,6 +56,21 @@ const HomepageBase: React.FunctionComponent<WithTranslation> = ({t}: {t: TFuncti
 					</Stack>
 				</Inner>
 			</StyledMain>
+			<section className={HomepageStyles.heroSection}>
+				<div className={HomepageStyles.sectionContent}>
+					<div className={HomepageStyles.oneHalf}>
+						<h2 className={HomepageStyles.heroTitle}>Create amazing experiences</h2>
+					</div>
+					<div className={HomepageStyles.oneFourth}>
+						<p>
+							Together, we’ve created Fluent UI, a collection of UX frameworks you can use to build Fluent experiences
+							that fit seamlessly into a broad range of Microsoft products.
+						</p>
+						<p>Connect with the cross-platform styles, controls and resources you need to do amazing things.</p>
+						{/* <p>{this._renderLink('#/get-started', 'Get started', {isCTA: true, dark: false})}</p> */}
+					</div>
+				</div>
+			</section>
 		</>
 	);
 }

@@ -19,6 +19,7 @@
 		"@fluentui/react": "^7.105.13",
 		"@svgr/webpack": "^5.3.1",
 		"@types/styled-components": "^5.0.1",
+		"@uifabric/fluent-theme": "^7.1.51",
 		"file-loader": "^6.0.0",
 		"gh-pages": "^2.2.0",
 		"html-webpack-plugin": "^4.0.4",
