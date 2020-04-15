@@ -1,12 +1,11 @@
 
-const {webpackMerge, basicWebpackConfig, htmlOverlay, webpackServeConfig, tsOverlay, fileOverlay, stylesOverlay} = require('just-scripts');
-//const config = webpackServeConfig;
+const {webpackMerge, basicWebpackConfig, htmlOverlay, tsOverlay, fileOverlay, stylesOverlay, webpackConfig} = require('just-scripts');
 
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
 
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+
 
 //const stylesConfig = stylesOverlay();
 
@@ -65,15 +64,22 @@ const svgConfig =
 	}
 };
 
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = function cookConfig(env, argv) {
 	config.plugins.push(new CleanWebpackPlugin());
 	config.plugins.push(new webpack.WatchIgnorePlugin([/\.s?css\.d\.ts$/]));
 	config.plugins.push(new webpack.DefinePlugin({
 		//this variable to true in `yarn build` because `--mode (production | development)` is inluded in params, see package.json scripts
-		'process.env.NODE_ENV': JSON.stringify(env.mode), 
+		'process.env.NODE_ENV': JSON.stringify("production"), 
 		//__VERSION__: JSON.stringify('1.0.0.' + Date.now())
 	}));
+	config.plugins.push(new CopyPlugin(
+		[
+			{from: 'public'}
+		]
+	));
 
 	return webpackMerge(
 		svgConfig, //order is important because there is another rule for svg in `config`
@@ -89,8 +95,6 @@ module.exports = function cookConfig(env, argv) {
 		}
 	);
 }
-
-console.log("done");
 
 function styleConfig() {
 	return {
@@ -116,10 +120,10 @@ function styleConfig() {
 								localsConvention: 'camelCaseOnly',
 							}
 						},
-						{
-							"loader": "postcss-loader",
-							options: {options: {}}
-						},
+						// {
+						// 	"loader": "postcss-loader",
+						// 	options: {options: {}}
+						// },
 						"sass-loader",
 					]
 				}
