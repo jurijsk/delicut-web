@@ -6,6 +6,8 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
 
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+
 //const stylesConfig = stylesOverlay();
 
 /*Configuring `styled-components` plugin
@@ -36,7 +38,7 @@ const tsConfig = tsOverlay({
 tsConfig.plugins[0].options.eslint = true;
 tsConfig.plugins[0].eslint = true;
 
-const config = merge(basicWebpackServeConfig, styleConfig(), tsConfig, fileOverlay());
+const config = merge(basicWebpackConfig, styleConfig(), tsConfig, fileOverlay());
 
 //Loads svg files either as url or as react componenent:
 //Allows 2 following use case scenarious:
@@ -62,11 +64,17 @@ const svgConfig =
 		}]
 	}
 };
-config.plugins.push(new webpack.WatchIgnorePlugin([/\.s?css\.d\.ts$/]));
 
 
 module.exports = function cookConfig(env, argv) {
-	const mode = argv.mode;
+	config.plugins.push(new CleanWebpackPlugin());
+	config.plugins.push(new webpack.WatchIgnorePlugin([/\.s?css\.d\.ts$/]));
+	config.plugins.push(new webpack.DefinePlugin({
+		//this variable to true in `yarn build` because `--mode (production | development)` is inluded in params, see package.json scripts
+		'process.env.NODE_ENV': JSON.stringify(env.mode), 
+		//__VERSION__: JSON.stringify('1.0.0.' + Date.now())
+	}));
+
 	return webpackMerge(
 		svgConfig, //order is important because there is another rule for svg in `config`
 		config,

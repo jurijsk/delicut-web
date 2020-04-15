@@ -6,7 +6,7 @@ import {initReactI18next} from "react-i18next";
 const resources = {
 	en: {
 		translation: {
-			"Make you podcast seen and lietened": "Make audience give a listen",
+			"Make you podcast seen and listened": "Make your audience give a listen",
 			"Audio isn't native to social web. Video is. Create shareable video clips with kinetic captions out of podcast that works even when muted.": "Audio isn't native to social web. Video is. Create shareable video clips with kinetic captions out of podcast that works even when muted."
 		}
 	}

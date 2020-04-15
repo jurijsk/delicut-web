@@ -4,10 +4,10 @@ import styled  from 'styled-components';
 import {Inner} from './Basics';
 
 import {useTranslation} from 'react-i18next';
-import  {ReactComponent as Logo} from './logo.svg';
+import  {ReactComponent as Logo} from '../static/logo.svg';
 
 
-const height = 48;
+const height = 42;
 const StyledHeader = styled.header`
 	height: ${height}px;
 	line-height: ${height}px;
@@ -25,15 +25,17 @@ const FlexInner = styled(Inner)`
 `;
 
 const LogoLink = styled.a`
-	height: ${height}px;
+	height: ${height + 10}px;
 	display: block;
 	cursor: pointer;
 	text-decoration: none;
 	color: #000;
-	padding: 6px 0;
-	filter: grayscale(100%);
+	padding: 5px 0px;
+	filter: brightness(0%) grayscale(100%);
+	transition: background-color .5s ease-in, filter .5s ease-out;
 	&:hover {
-		filter:none;
+		filter: brightness(100%) grayscale(0%);
+		background-color: #222;
 	}
 	&:visited{
 		color: #000;
@@ -45,7 +47,7 @@ export const AppHeader: React.FunctionComponent = () => {
 	return <StyledHeader>
 		<FlexInner>
 			<LogoLink  href="/" title={t('Go to Delicut homepage')}>
-				 <Logo height={36} /> 
+				<Logo height={height} /> 
 			</LogoLink>
 		</FlexInner>
 	</StyledHeader>

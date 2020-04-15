@@ -6,18 +6,23 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
 
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+
 //const stylesConfig = stylesOverlay();
 
 /*Configuring `styled-components` plugin
 https://github.com/Igorbek/typescript-plugin-styled-components
 1. import default from the plugin module */
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
-//2. create a transformer;
-//the factory additionally accepts an options object which described below
+/* 2. create a transformer;
+the factory additionally accepts an options object which described below
+Also see 'Better debugging' section: https://styled-components.com/docs/tooling
+*/
 const styledComponentsTransformer = createStyledComponentsTransformer({
+	//pure: false,
 	ssr: true,
 	displayName: true,
-	getDisplayName: (filename, bindingName) => path.basename(filename, path.extname(filename)) + (bindingName ? "-" + bindingName : ""),
+	//getDisplayName: (filename, bindingName) => path.basename(filename, path.extname(filename)) + (bindingName ? "-" + bindingName : ""),
 	minify: false
 });
 
@@ -61,10 +66,23 @@ const svgConfig =
 	}
 };
 config.plugins.push(new webpack.WatchIgnorePlugin([/\.s?css\.d\.ts$/]));
+config.devServer = {
+	//port: 8083,
+	//public: 'http://dd861ef5.eu.ngrok.io',
+	//this should be your curent IP address in local network to make website available in your local network
+	host: '192.168.1.136',
+	//disableHostCheck: true
+}
 
 
 module.exports = function cookConfig(env, argv) {
-	const mode = argv.mode;
+	config.plugins.push(new CleanWebpackPlugin());
+	config.plugins.push(new webpack.WatchIgnorePlugin([/\.s?css\.d\.ts$/]));
+	config.plugins.push(new webpack.DefinePlugin({
+		//setting node_env directly because stupid just's start does not pass a shit down the execution chain unlike its build script
+		'process.env.NODE_ENV': JSON.stringify("development"),
+	}));
+
 	return webpackMerge(
 		svgConfig, //order is important because there is another rule for svg in `config`
 		config,
@@ -106,10 +124,10 @@ function styleConfig(){
 								localsConvention: 'camelCaseOnly',
 							}
 						},
-						{
-							"loader": "postcss-loader",
-							options: {options: {}}
-						},
+						// { //not used for now
+						// 	"loader": "postcss-loader",
+						// 	options: {options: {}}
+						// },
 						"sass-loader",
 					]
 				}

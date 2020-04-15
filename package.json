@@ -6,12 +6,13 @@
 	"main": "lib-commonjs/index.js",
 	"module": "lib/index.js",
 	"scripts": {
-		"build": "just-scripts build",
+		"build": "just-scripts build --mode production",
+		"build-dev": "just-scripts build --mode development",
 		"just": "just-scripts",
 		"start": "just-scripts start",
 		"test": "just-scripts test",
 		"change": "npx beachball change",
-		"predeploy": "just-scripts build  && cp public/CNAME dist/CNAME",
+		"predeploy": "just-scripts build && cp public/CNAME dist/CNAME",
 		"deploy": "gh-pages -d dist",
 		"gen": "npx plop"
 	},
@@ -39,6 +40,7 @@
 		"@typescript-eslint/eslint-plugin": "^2.27.0",
 		"@typescript-eslint/parser": "^2.27.0",
 		"babel-plugin-styled-components": "^1.10.7",
+		"clean-webpack-plugin": "^3.0.0",
 		"css-loader": "^3.5.1",
 		"eslint": "^6.8.0",
 		"just-scripts": "^0.37.1",
