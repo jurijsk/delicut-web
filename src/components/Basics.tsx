@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {appPadding, mediaQuery, contentWidth} from '../styles/constants';
 
+
 export const Inner = styled.div`
 	width: 960px;
 	display: flex;
@@ -23,6 +24,9 @@ export const Inner = styled.div`
 	@media (max-width: 960px) {
 		width: 100%;
 		padding: 0px 30px;
+	}
+	${mediaQuery.mobile} {
+		padding: 0px 12px;
 	}
 `;
 

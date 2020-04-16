@@ -11,7 +11,6 @@ import {TFunction, WithT} from 'i18next';
 
 //style
 import styled, {css, keyframes} from 'styled-components';
-import HomepageStyles from './Homepage.module.scss';
 import {MotionDurations, MotionTimings, FontSizes} from '@uifabric/fluent-theme';
 import {appPadding, mediaQuery} from '../../styles/constants';
 
@@ -59,9 +58,31 @@ const SectionStyles  = styled.section`
 `;
 
 const HeroSection = styled(SectionStyles)`
-        padding-top: 132px;
-		padding-bottom: 132px;
+        padding: 132px 0;
 		background-color: #94E5FF;
+		${mediaQuery.smallDesktop} {
+			padding: 80px 0 30px;
+		}
+`;
+
+
+
+const StyledMain = styled.main`
+	width: 100%;
+    position: relative;
+    overflow-x: hidden;
+	margin: 0;
+`;
+
+const HeroTextContent = styled.div`
+	width: 50%;
+	flex: 0 0 auto;
+	${mediaQuery.smallDesktop} {
+		width: 60%;
+	}
+		${mediaQuery.medium} {
+		width: 100%;
+	}
 `;
 
 const HeroTitle = styled.h2`
@@ -70,18 +91,12 @@ const HeroTitle = styled.h2`
 	color: #3d2450;
 	line-height: 1.1;
 	margin: 0;
-`;
-
-const StyledMain = styled.main`
-	width: 100%;
-    position: relative;
-    overflow-x: hidden;
-	margin: 0px 0px 0px 0px;
-`;
-
-const HeroTextContent = styled.div`
-	width: 50%;
-	flex: 0 0 auto;
+	${mediaQuery.smallDesktop} {
+		font-size: ${FontSizes.size42};
+	}
+	${mediaQuery.mobile} {
+		font-size: 32px;
+	}
 `;
 
 const HeroDescription = styled.div`
@@ -90,6 +105,13 @@ const HeroDescription = styled.div`
 	& p {
 		margin-bottom: 15px;
 		font-weight: 600;
+		font-size: 18px;
+	}
+	${mediaQuery.smallDesktop} {
+		margin: 40px 0px 20px;
+		& p {
+			font-weight: normal;
+		}
 	}
 `;
 
@@ -97,10 +119,14 @@ const HeroMedia = styled.div`
 	text-align: center;
     position: relative;
 	flex: 1 1 auto;
+	width: 50%;
+	${mediaQuery.smallDesktop} {
+		width: 40%;
+	}
 `;
 
 const HeroImage = styled.img`
-	width: 400px;
+	width: 70%;
 `;
 
 class HomepageBase extends React.Component<WithTranslation> {
@@ -129,10 +155,10 @@ class HomepageBase extends React.Component<WithTranslation> {
 						<HeroTextContent>
 							<HeroTitle>{this.t('Make you podcast seen and listened')}</HeroTitle>
 							<HeroDescription>
-								<Text variant="medium" as="p" block>
+								<Text as="p" block>
 									{this.t("Audio isn't native to social web. Video is. Create shareable video clips with kinetic captions out of podcast that works even when muted.")}
 								</Text>
-								<Text variant="medium" as="p" block>
+								<Text as="p" block>
 									{this.t("Share the video view Delicut’s EpiCentre URL to route user to their favorite podcast app and measure vital metrics along the way.")}
 								</Text>
 							</HeroDescription>
