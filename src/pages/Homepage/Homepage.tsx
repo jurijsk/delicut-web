@@ -119,7 +119,9 @@ class HomepageBase extends React.Component<WithTranslation> {
 	}
 
 	render() {
-
+		const stackTokens = {
+			childrenGap: 15
+		}
 		return (
 			<StyledMain>
 				<HeroSection>
@@ -134,7 +136,7 @@ class HomepageBase extends React.Component<WithTranslation> {
 									{this.t("Share the video view Delicut’s EpiCentre URL to route user to their favorite podcast app and measure vital metrics along the way.")}
 								</Text>
 							</HeroDescription>
-							<Stack gap={15}>
+							<Stack tokens={stackTokens}>
 								<TryOut />
 							</Stack>
 						</HeroTextContent>

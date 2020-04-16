@@ -1,12 +1,15 @@
-
 const {webpackMerge, basicWebpackServeConfig, htmlOverlay, webpackServeConfig, tsOverlay, fileOverlay, stylesOverlay } = require('just-scripts');
-//const config = webpackServeConfig;
+
+const mode = basicWebpackServeConfig.mode;
+const isProduction = mode === 'production'; 
+
 
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
 
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 //const stylesConfig = stylesOverlay();
 
@@ -54,7 +57,7 @@ const App = () => (
 */
 //Requires `yarn add @svgr/webpack url-loader`
 //more here: https://www.pluralsight.com/guides/how-to-load-svg-with-react-and-webpack
-const svgConfig =
+const svg =
 {
 	module: {
 		rules: [{
@@ -65,7 +68,7 @@ const svgConfig =
 		}]
 	}
 };
-config.plugins.push(new webpack.WatchIgnorePlugin([/\.s?css\.d\.ts$/]));
+
 config.devServer = {
 	//port: 8083,
 	//public: 'http://dd861ef5.eu.ngrok.io',
@@ -76,19 +79,33 @@ config.devServer = {
 
 
 module.exports = function cookConfig(env, argv) {
+	config.plugins.push(new webpack.WatchIgnorePlugin([/\.s?css\.d\.ts$/]));
 	config.plugins.push(new CleanWebpackPlugin());
 	config.plugins.push(new webpack.WatchIgnorePlugin([/\.s?css\.d\.ts$/]));
 	config.plugins.push(new webpack.DefinePlugin({
 		//setting node_env directly because stupid just's start does not pass a shit down the execution chain unlike its build script
-		'process.env.NODE_ENV': JSON.stringify("development"),
+		'process.env.NODE_ENV': JSON.stringify(mode),
 	}));
+	config.plugins.push(new CopyPlugin(
+		[
+			{from: 'public'}
+		]
+	));
+
+	let html = htmlOverlay({
+		template: 'public/index.html',
+		production: isProduction,
+		gmtContainerId: 'GTM-PDRWR5V',
+		meta: {
+			'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+			'theme-color': '#94E5FF'
+		}
+	});
 
 	return webpackMerge(
-		svgConfig, //order is important because there is another rule for svg in `config`
+		svg, //order is important because there is another rule for svg in `config`
 		config,
-		htmlOverlay({
-			template: 'public/index.html'
-		}),
+		html,
 		{
 			// Here you can custom webpack configurations
 			output: {
