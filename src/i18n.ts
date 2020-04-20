@@ -6,8 +6,9 @@ import {initReactI18next} from "react-i18next";
 const resources = {
 	en: {
 		translation: {
-			"Make you podcast seen and listened": "Make your audience give a listen",
-			"Audio isn't native to social web. Video is. Create shareable video clips with kinetic captions out of podcast that works even when muted.": "Audio isn't native to social web. Video is. Create shareable video clips with kinetic captions out of podcast that works even when muted."
+			"Make you podcast seen and listened": "Make your audience give a listen"
+			,"Audio isn't native to social web. Video is. Create shareable video clips with kinetic captions out of podcast that works even when muted.": "Audio isn't native to social web. Video is. Create shareable video clips with kinetic captions out of podcast that works even when muted."
+			,"Delicut simplifies and streamlines the prosses of reaching bigger audience to few simple steps": "Delicut simplifies and streamlines the prosses of reaching bigger audience to few simple steps:"
 		}
 	}
 };

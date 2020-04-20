@@ -1,41 +1,37 @@
-import styled from 'styled-components';
-import {appPadding, mediaQuery, contentWidth} from '../styles/constants';
+import styled, {css} from 'styled-components';
+import {appPadding, mediaQueries, contentWidth, contentSizes} from '../styles/constants';
 
-
-export const Inner = styled.div`
-	width: 960px;
+/** Flex container */
+export const SectionContent = styled.div`
 	display: flex;
-	justify-content: flex-start;
+	flex-wrap: wrap;
 	margin: 0px auto;
+	width: ${contentSizes.contentMax};
 
-	@media (max-width: 1680px) {
-		width: 1336px;
+	${mediaQueries.screenXXL} {
+		width: ${contentSizes.contentXXL};
 	}		
-	@media (max-width: 1460px) {
-		width: 1136px;
+	${mediaQueries.screenXL} {
+		width: ${contentSizes.contentXL};
 	}
-		@media (max-width: 1280px) {
-		width: 960px;
+	${mediaQueries.screenL} {
+		width: ${contentSizes.contentL};
 	}
-	@media (max-width: 1024px) {
+	${mediaQueries.screenM} {
+		width: 100%;
+		padding: 30px;
+	}
+	${mediaQueries.screenS} {
 		width: 100%;
 		padding: 0px 30px;
 	}
-	@media (max-width: 960px) {
-		width: 100%;
-		padding: 0px 30px;
-	}
-	${mediaQuery.mobile} {
+	${mediaQueries.screenXXS} {
 		padding: 0px 12px;
 	}
 `;
 
-const SectionContent = styled.div`
+export const FlexContainerBase = css`
 	display: flex;
-	flex: 1 0 auto;
-	flex-wrap: wrap;
-	max-width: ${contentWidth};
-	width: 100%; // IE11 needs width for flexbox to calculate correctly.
 `;
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled  from 'styled-components';
 
-import {Inner} from './Basics';
+import {SectionContent} from './Basics';
 
 import {useTranslation} from 'react-i18next';
 import  {ReactComponent as Logo} from '../static/logo.svg';
@@ -18,7 +18,7 @@ const StyledHeader = styled.header`
 	z-index: 10;
 `;
 
-const FlexInner = styled(Inner)`
+const FlexInner = styled(SectionContent)`
 	display:flex;
 	justify-content:flex-start;
 	-webkit-box-pack: start;
