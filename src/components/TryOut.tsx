@@ -56,7 +56,7 @@ const styles = mergeStyleSets({
 });
 
 // Example code
-export class TryOut extends React.Component<{}, ICalloutBasicExampleState> {
+export class TryOut extends React.Component<{id: string}, ICalloutBasicExampleState> {
 	public state: ICalloutBasicExampleState = {
 		isCalloutVisible: false
 	};
@@ -75,6 +75,7 @@ export class TryOut extends React.Component<{}, ICalloutBasicExampleState> {
 				<div> { /* keep it to prevent jumping on Callout open then component lives in <Stack */}
 					<div className={styles.buttonArea} ref={this._menuButtonElement}>
 						<PrimaryButton
+							id={getId(this.props.id) }
 							text="Try now for free"
 							ariaLabel="Try Delicut for free with 2 episodes"
 							onClick={this._onShowCalloutClicked} />

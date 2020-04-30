@@ -38,6 +38,8 @@ export const contentSizes = {
 	contentL: contentL+'px',
 };
 
+const customMediaQuery = (maxWidth: number) =>
+	`@media only screen and (max-width: ${maxWidth}px)`;
 export const mediaQueries = {
 	maxMobile: `@media only screen and (max-width: ${ScreenWidthMaxUhfMobile}px)`,
 	maxLarge: `@media only screen and (max-width: ${ScreenWidthMaxXLarge}px)`,
@@ -50,6 +52,5 @@ export const mediaQueries = {
 	screenS: `@media only screen and (max-width: ${screenS}px)`,
 	screenXS: `@media only screen and (max-width: ${screenXS}px)`,
 	screenXXS: `@media only screen and (max-width: ${screenXXS}px)`,
-
-
+	custom: customMediaQuery,
 };

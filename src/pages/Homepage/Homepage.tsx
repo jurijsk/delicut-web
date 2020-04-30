@@ -16,7 +16,9 @@ import {appPadding, mediaQueries} from '../../styles/constants';
 
 //media
 import HeroImageSrc from '../../static/hero-image.png';
-import HowImageSrc from '../../static/how-it-works.png';
+
+import {ReactComponent as Steps} from '../../static/how-it-works.svg';
+
 import NumbersImageSrc from '../../static/numbers-image.png';
 import AnalyticImageSrc from '../../static/analytics.png';
 import EpicentreImageSrc from '../../static/epicentre.png';
@@ -189,7 +191,9 @@ const HowMedia = styled.div`
 	}
 `;
 
-const HowImage = styled.img``;
+const HowImage = styled(Steps)`
+	width: 70%;
+`;
 
 
 const EpiCentreSection = styled(SectionStyles)`
@@ -238,7 +242,7 @@ class HomepageBase extends React.Component<WithTranslation> {
 								</Text>
 							</HeroDescription>
 							<Stack tokens={stackTokens}>
-								<TryOut />
+								<TryOut id="try-out-top" />
 							</Stack>
 						</HeroTextContent>
 						<MediaBlock>
@@ -264,7 +268,7 @@ class HomepageBase extends React.Component<WithTranslation> {
 							</Text>
 						</TextContent>
 						<HowMedia>
-							<HowImage src={HowImageSrc}></HowImage>
+							<HowImage/>
 						</HowMedia>
 					</SectionContent>
 				</HowSection>
@@ -317,6 +321,9 @@ class HomepageBase extends React.Component<WithTranslation> {
 						</TextContent>
 						<MediaBlock>
 							<MadiaImage src={NumbersImageSrc}></MadiaImage>
+							<br />
+							<br />
+							<TryOut id="try-out-bottom" />
 						</MediaBlock>
 					</SectionContent>
 				</NumbersSection>
