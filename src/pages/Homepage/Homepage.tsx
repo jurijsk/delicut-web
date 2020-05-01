@@ -20,7 +20,7 @@ import HeroImageSrc from '../../static/hero-image.png';
 import {ReactComponent as Steps} from '../../static/how-it-works.svg';
 
 import NumbersImageSrc from '../../static/numbers-image.png';
-import AnalyticImageSrc from '../../static/analytics.png';
+import {ReactComponent as AnalyticsImage} from '../../static/analytics.svg';
 import EpicentreImageSrc from '../../static/epicentre.png';
 
 
@@ -182,7 +182,7 @@ const MadiaImage = styled.img`
 const HowSection = styled(SectionStyles)`
 	background-color: #F9E8FF;
 `;
-const HowMedia = styled.div`
+const HowBlock = styled.div`
 	text-align: center;
     position: relative;
 	flex: 1 1 auto;
@@ -192,6 +192,10 @@ const HowMedia = styled.div`
 `;
 
 const HowImage = styled(Steps)`
+	width: 70%;
+`;
+
+const AnalyticsImageStyled = styled(AnalyticsImage)`
 	width: 70%;
 `;
 
@@ -267,9 +271,9 @@ class HomepageBase extends React.Component<WithTranslation> {
 								{this.t("Delicut transcribes the audio to enable kinetic captioning which makes your audio readable and engaging even when muted.")}
 							</Text>
 						</TextContent>
-						<HowMedia>
+						<MediaBlock>
 							<HowImage/>
-						</HowMedia>
+						</MediaBlock>
 					</SectionContent>
 				</HowSection>
 				<EpiCentreSection>
@@ -301,7 +305,7 @@ class HomepageBase extends React.Component<WithTranslation> {
 							</Text>
 						</TextContent>
 						<MediaBlock>
-							<MadiaImage src={AnalyticImageSrc}></MadiaImage>
+							<AnalyticsImageStyled/>
 						</MediaBlock>
 					</SectionContent>
 				</AnalyticsSection>
