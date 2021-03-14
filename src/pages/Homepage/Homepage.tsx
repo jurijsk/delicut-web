@@ -331,6 +331,9 @@ class HomepageBase extends React.Component<WithTranslation> {
 						</MediaBlock>
 					</SectionContent>
 				</NumbersSection>
+				<SectionStyles>
+					<a href="https://twitter.com/ykovzel">[tw]</a>
+				</SectionStyles>
 			</StyledMain>
 		);
 	}
